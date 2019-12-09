@@ -48,10 +48,6 @@ galaxy_info:
     #       Maximum 20 tags per role.
 
 dependencies: 
-  # - src: git+https://github.com:NateDreier/role-docker.git
-  #   version: master
-  #   name: docker-install
-  # - { role: 'git+http://github.com:NateDreier/role-docker.git,master'}
    - name: docker-install
      src: git@github.com:NateDreier/role-docker.git
      scm: git
