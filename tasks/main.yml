@@ -2,7 +2,7 @@
 - name: copy kubernetes.repo
   template:
     src: kubernetes.repo.j2
-    dest: /etc/yum.repos.d/kubernetes.repo.j2
+    dest: /etc/yum.repos.d/kubernetes.repo
     owner: root
     group: root
     mode: 0644
