@@ -1,0 +1,5 @@
+add the k8s repo
+yum update
+yum install kubelet kubeadm kubectl
+start and enable kubernetes
+
