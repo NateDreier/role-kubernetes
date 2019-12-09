@@ -1,29 +1,29 @@
 ---
-name: copy kubernetes.repo
-template:
-  src: /templates/kubernetes.repo.j2
-  dest: /etc/yum.repos.d/kubernetes.repo.j2
-  owner: root
-  group: root
-  mode: 0644
-become: yes
+- name: copy kubernetes.repo
+  template:
+    src: /templates/kubernetes.repo.j2
+    dest: /etc/yum.repos.d/kubernetes.repo.j2
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
 
-name: update
-yum:
-  name: '*'
-  state: present
-become: yes
+- name: update
+  yum:
+    name: '*'
+    state: present
+  become: yes
 
-name: install cooooooberneties
-yum:
-  name: "{{ item }}"
-  state: present
-loop: "{{ yumbo }}"
-become: yes
+- name: install cooooooberneties
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ yumbo }}"
+  become: yes
 
-name: start and enable cooooooooooberneties
-systemd:
-  name: kubernetes
-  state: started
-  enabled: yes
-become: yes
+- name: start and enable cooooooooooberneties
+  systemd:
+    name: kubernetes
+    state: started
+    enabled: yes
+  become: yes
