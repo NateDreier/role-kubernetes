@@ -1,7 +1,7 @@
 ---
 - name: copy kubernetes.repo
   template:
-    src: /templates/kubernetes.repo.j2
+    src: kubernetes.repo.j2
     dest: /etc/yum.repos.d/kubernetes.repo.j2
     owner: root
     group: root
