@@ -36,7 +36,7 @@ some.address.or.ip
 ```
 
 Make sure you have a dir called roles then run the following command:
-ansible-galaxy install -r requirements.yml --roles-path roles/ && ansible-playbook -i hosts kubernetes-install.yml -u user -D && rm -rf roles/*
+`ansible-galaxy install -r requirements.yml --roles-path roles/ && ansible-playbook -i hosts kubernetes-install.yml -u user -D && rm -rf roles/*`
 
 
 Role Variables
