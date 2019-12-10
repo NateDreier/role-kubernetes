@@ -1,12 +1,43 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role configures a host with vanilla Docker (meta/main.yml) and vanilla Kubernetes. Below I have described the four important files/directories you need, the kubernetes.yml, requirements.yml and the host file. The command that gets run looks at the requirements file and pulls all the defined roles and installs them into `roles/`, after that your typical `ansible-playbook` command gets run, finally it cleans up everything that was pulled down. Credit for that one goes to a good buddy.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+My setup is - 
+kubernetes.yml
+```
+---
+- hosts: hosts
+  gather_facts: true
+  become: true
+
+  roles:
+    - role-kubernetes
+```
+requirements.yml
+```
+- name: role-kubernetes
+  src: https://github.com/NateDreier/role-kubernetes
+```
+hosts
+```
+[hosts:children]
+master-nodes
+worker-nodes
+
+[master-nodes]
+some.address.or.ip
+
+[worker-nodes]
+some.address.or.ip
+```
+
+Make sure you have a dir called roles then run the following command:
+ansible-galaxy install -r requirements.yml --roles-path roles/ && ansible-playbook -i hosts kubernetes-install.yml -u user -D && rm -rf roles/*
+
 
 Role Variables
 --------------
