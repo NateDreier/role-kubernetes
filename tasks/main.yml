@@ -1,4 +1,12 @@
 ---
+- name: disable swap space
+  command: swapoff -a
+
+- name: confirm there is no swap
+  file:
+    path: /swapfile
+    state: absent
+    
 - name: copy kubernetes.repo
   template:
     src: kubernetes.repo.j2
