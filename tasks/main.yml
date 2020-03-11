@@ -53,6 +53,7 @@
   copy:
     src: /tmp/helm/linux-amd64/helm
     dest: /usr/bin
+    remote_src: yes
 - name: clean up
   file:
     path: /tmp/helm/
