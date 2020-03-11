@@ -35,3 +35,24 @@
     state: started
     enabled: yes
   become: yes
+
+- name: mkdir
+  file:
+    path: /tmp/helm
+    state: directory
+- name: download helm
+  get_url:
+    url: https://get.helm.sh/helm-v3.1.1-linux-amd64.tar.gz
+    dest: /tmp/helm/helm.tar.gz
+- name: untar
+  unarchive: 
+    src: /tmp/helm/helm.tar.gz
+    dest: /tmp/helm/
+- name: copy
+  copy:
+    src: /tmp/helm/linux-amd64/helm
+    dest: /usr/bin
+- name: clean up
+  file:
+    path: /tmp/helm/
+    state: absent
