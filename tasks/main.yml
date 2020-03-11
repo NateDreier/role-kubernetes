@@ -48,6 +48,7 @@
   unarchive: 
     src: /tmp/helm/helm.tar.gz
     dest: /tmp/helm/
+    remote_src: yes
 - name: copy
   copy:
     src: /tmp/helm/linux-amd64/helm
